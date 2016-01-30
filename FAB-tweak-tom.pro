@@ -15,10 +15,12 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     createbedlevelinggcode.cpp \
-    gcodeeditor.cpp
+    gcodeeditor.cpp \
+    logger.cpp
 
 HEADERS  += mainwindow.h \
     createbedlevelinggcode.h \
-    gcodeeditor.h
+    gcodeeditor.h \
+    logger.h
 
 FORMS    += mainwindow.ui
