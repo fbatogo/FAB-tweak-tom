@@ -67,6 +67,7 @@ void CreateBedLevelingGCode::setZFeedRate(double newRate)
 QString CreateBedLevelingGCode::createGCodeFile(QString filename)
 {
     GCodeEditor gcode;
+    double left, bottom, right, top;
 
     gcode.createNewFile();
 
@@ -91,7 +92,39 @@ QString CreateBedLevelingGCode::createGCodeFile(QString filename)
     // Then, move the head to the correct depth.
     gcode.setContactMove(0, 0, mCutDepth);
 
-    // XXX Finish drawing the square.
+    left = 0;
+    bottom = 0;
+
+    // set our height and width
+    right = mLevelWidth;
+    top = mLevelHeight;
+
+    while ((left < right) && (bottom < top)) {
+        // Do one complete square.
+        gcode.setContactMove(left, bottom, mCutDepth);
+        gcode.setContactMove(left, top, mCutDepth);
+        gcode.setContactMove(right, top, mCutDepth);
+        gcode.setContactMove(right, bottom, mCutDepth);
+        gcode.setContactMove(left, bottom, mCutDepth);
+
+        // Move one overlap unit in each direction.
+        if (left < right) {
+            left += mOverlapSize;
+            right -= mOverlapSize;
+        }
+
+        if (bottom < top) {
+            bottom += mOverlapSize;
+            top -= mOverlapSize;
+        }
+    }
+
+    if (gcode.writeFile(filename) == false) {
+        return "Unable to write the G-code to a file!";
+    }
+
+    // Everything is good.
+    return "";
 }
 
 /**

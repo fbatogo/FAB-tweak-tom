@@ -4,6 +4,8 @@
 #include <QFileDialog>
 #include <QMessageBox>
 
+#include "createbedlevelinggcode.h"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -144,7 +146,22 @@ void MainWindow::slotBedLevelFileSelectClicked()
  */
 void MainWindow::slotBedLevelCreateClicked()
 {
-   QMessageBox::information(this, "Not implemented", "This isn't implemented!  How lucky for you!");
+    CreateBedLevelingGCode bedleveling;
+
+    bedleveling.setCutDepth(ui->bedLevelDepthSpinBox->value());
+    bedleveling.setLevelHeight(ui->bedLevelHeightSpinBox->value());
+    bedleveling.setLevelWidth(ui->bedLevelWidthSpinBox->value());
+    bedleveling.setMillSize(ui->bedLevelMillSizeSpinbox->value());
+    bedleveling.setOverlapSize(ui->bedLevelOverlapSpinBox->value());
+    bedleveling.setSpindleSpeed(ui->bedLevelSpindleSpeedSpinBox->value());
+    bedleveling.setXYFeedRate(ui->bedlevelXYFeedRateSpinBox->value());
+    bedleveling.setZFeedRate(ui->bedLevelZFeedRateSpinBox->value());
+
+    if (bedleveling.createGCodeFile(ui->bedLevelFileToCreateField->text()).isEmpty() == false) {
+        QMessageBox::critical(this, tr("File Not Created"), tr("Unable to create the G-code file!"));
+    } else {
+        QMessageBox::information(this, tr("File Create"), tr("The bed leveling G-code has been created."));
+    }
 }
 
 /**
