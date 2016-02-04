@@ -78,7 +78,7 @@ void GCodeEditor::moveCursorToBottom()
  *
  * @param index - The new location to move the cursor to.
  */
-void GCodeEditor::moveCursorToLine(size_t index)
+void GCodeEditor::moveCursorToLine(int index)
 {
     if (index > mGCodeFile.size()) {
         mCursorLocation = mGCodeFile.size();
@@ -124,7 +124,7 @@ void GCodeEditor::setFeedRateModeUnitsPerMinute(double feedrate)
     mZFeedRate = feedrate;
 
     // Then, write our setting.
-    addOrEditGCodeLine("G94 F" + QString::number(feedrate));
+    addOrEditGCodeLine("G94 F" + QString::number(feedrate, 'f', 2));
 }
 
 /**
@@ -167,13 +167,8 @@ void GCodeEditor::setMove(double x, double y, double z, bool contactMove)
         } else {
             effectiveFeedRate = mZFeedRate;
         }
-    } else if (((x != 0) || (y != 0)) && (z == 0)) {
-        // Use the XY feed rate.
-        effectiveFeedRate = mXYFeedRate;
-    } else if ((x == 0) && (y == 0) && (z != 0)) {
-        effectiveFeedRate = mZFeedRate;
     } else {
-        log.addLine("Reached an unexpected feed rate setting with parameters (" + QString::number(x) + "," + QString::number(y) + "," + QString::number(z) + ")");
+        log.addLine("Reached an unexpected feed rate setting with parameters (" + QString::number(x, 'f', 4) + "," + QString::number(y, 'f', 4) + "," + QString::number(z, 'f', 4) + ")");
 
         // Just use XY rate.
         effectiveFeedRate = mXYFeedRate;
@@ -185,20 +180,18 @@ void GCodeEditor::setMove(double x, double y, double z, bool contactMove)
         gcode = "G01 ";
     }
 
-    if (x != 0) {
-        gcode += "X" + QString::number(x) + " ";
-    }
+    if (z == 0) {
+        gcode += "X" + QString::number(x, 'f', 4) + " ";
 
-    if (y != 0) {
-        gcode += "Y" + QString::number(y) + " ";
+        gcode += "Y" + QString::number(y, 'f', 4) + " ";
     }
 
     if (z != 0) {
-        gcode += "Z" + QString::number(z) + " ";
+        gcode += "Z" + QString::number(z, 'f', 4) + " ";
     }
 
     if (effectiveFeedRate != 0) {
-        gcode += "F" + QString::number(effectiveFeedRate);
+        gcode += "F" + QString::number(effectiveFeedRate, 'f', 4);
     }
 
     // Finally, write it to our file.

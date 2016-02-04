@@ -148,7 +148,7 @@ void MainWindow::slotBedLevelCreateClicked()
 {
     CreateBedLevelingGCode bedleveling;
 
-    bedleveling.setCutDepth(ui->bedLevelDepthSpinBox->value());
+    bedleveling.setCutDepth((-1 * ui->bedLevelDepthSpinBox->value()));
     bedleveling.setLevelHeight(ui->bedLevelHeightSpinBox->value());
     bedleveling.setLevelWidth(ui->bedLevelWidthSpinBox->value());
     bedleveling.setMillSize(ui->bedLevelMillSizeSpinbox->value());
@@ -160,7 +160,7 @@ void MainWindow::slotBedLevelCreateClicked()
     if (bedleveling.createGCodeFile(ui->bedLevelFileToCreateField->text()).isEmpty() == false) {
         QMessageBox::critical(this, tr("File Not Created"), tr("Unable to create the G-code file!"));
     } else {
-        QMessageBox::information(this, tr("File Create"), tr("The bed leveling G-code has been created."));
+        QMessageBox::information(this, tr("File Created"), tr("The bed leveling G-code has been created."));
     }
 }
 

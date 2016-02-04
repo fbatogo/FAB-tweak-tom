@@ -14,7 +14,7 @@ public:
 
     void moveCursorToTop();
     void moveCursorToBottom();
-    void moveCursorToLine(size_t index);
+    void moveCursorToLine(int index);
 
     size_t getLineCount();
 
@@ -33,7 +33,7 @@ private:
     void setMove(double x, double y, double z, bool contactMove);
 
     QStringList mGCodeFile;
-    size_t mCursorLocation;
+    int mCursorLocation;
     double mXYFeedRate;
     double mZFeedRate;
 };

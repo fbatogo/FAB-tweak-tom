@@ -101,11 +101,11 @@ QString CreateBedLevelingGCode::createGCodeFile(QString filename)
 
     while ((left < right) && (bottom < top)) {
         // Do one complete square.
-        gcode.setContactMove(left, bottom, mCutDepth);
-        gcode.setContactMove(left, top, mCutDepth);
-        gcode.setContactMove(right, top, mCutDepth);
-        gcode.setContactMove(right, bottom, mCutDepth);
-        gcode.setContactMove(left, bottom, mCutDepth);
+        gcode.setContactMove(left, bottom, 0);
+        gcode.setContactMove(left, top, 0);
+        gcode.setContactMove(right, top, 0);
+        gcode.setContactMove(right, bottom, 0);
+        gcode.setContactMove(left, bottom, 0);
 
         // Move one overlap unit in each direction.
         if (left < right) {
