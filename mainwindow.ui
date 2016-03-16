@@ -24,7 +24,7 @@
        </sizepolicy>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="introPage">
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -664,6 +664,31 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>bedLevelMillSizeSpinbox</tabstop>
+  <tabstop>bedLevelOverlapSpinBox</tabstop>
+  <tabstop>bedLevelWidthSpinBox</tabstop>
+  <tabstop>bedLevelHeightSpinBox</tabstop>
+  <tabstop>bedLevelDepthSpinBox</tabstop>
+  <tabstop>bedlevelXYFeedRateSpinBox</tabstop>
+  <tabstop>bedLevelZFeedRateSpinBox</tabstop>
+  <tabstop>bedLevelSpindleSpeedSpinBox</tabstop>
+  <tabstop>bedLevelFileToCreateField</tabstop>
+  <tabstop>bedLevelFileSelectButton</tabstop>
+  <tabstop>bedLevelCreatePushButton</tabstop>
+  <tabstop>feedRateTweakingInputFileField</tabstop>
+  <tabstop>feedRateTweakingInputFileButton</tabstop>
+  <tabstop>feedRateTweakingCleanUpGcodeGroupCheckBox</tabstop>
+  <tabstop>feedRateTweakingAllFeedRatesAlignedCheckBox</tabstop>
+  <tabstop>feedRateTweakingReplaceM05CheckBox</tabstop>
+  <tabstop>feedRateTweakingRedefineFeedRateGroupCheckBox</tabstop>
+  <tabstop>feedRateTweakerOnlyReplaceFeedRateCheckBox</tabstop>
+  <tabstop>feedRateTweakerXYFeedRateSpinBox</tabstop>
+  <tabstop>feedRateTweakingZFeedRateSpinBox</tabstop>
+  <tabstop>feedRateTweakerOutputFileField</tabstop>
+  <tabstop>feedRateTweakerOutputFileButton</tabstop>
+  <tabstop>feedRateTweakingCreateButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

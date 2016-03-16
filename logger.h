@@ -16,6 +16,6 @@ private:
     QTextStream mTextStream;
 };
 
-static Logger log;
+static Logger logger;
 
 #endif // LOGGER_H

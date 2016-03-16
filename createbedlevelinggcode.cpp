@@ -138,32 +138,32 @@ bool CreateBedLevelingGCode::requiredValuesSet()
     // We don't actually use mill size, so don't check it.
 
     if (mOverlapSize <= 0) {
-        log.addLine("No valid overlap size was provided while trying to mill a level bed.");
+        logger.addLine("No valid overlap size was provided while trying to mill a level bed.");
         return false;
     }
 
     if (mCutDepth <= 0) {
-        log.addLine("No valid cut depth was provided while trying to mill a level bed.");
+        logger.addLine("No valid cut depth was provided while trying to mill a level bed.");
         return false;
     }
 
     if (mLevelWidth <= 0) {
-        log.addLine("No valid width was provided while trying to mill a level bed.");
+        logger.addLine("No valid width was provided while trying to mill a level bed.");
         return false;
     }
 
     if (mLevelHeight <= 0) {
-        log.addLine("No valid height was provided while trying to mill a level bed.");
+        logger.addLine("No valid height was provided while trying to mill a level bed.");
         return false;
     }
 
     if (mSpindleSpeed <= 0) {
-        log.addLine("No valid spindle speed was provided while trying to mill a level bed.");
+        logger.addLine("No valid spindle speed was provided while trying to mill a level bed.");
         return false;
     }
 
     if ((mXYFeedRate == 0) && (mZFeedRate == 0)) {
-        log.addLine("No feed rate was provided while trying to mill a level bed.");
+        logger.addLine("No feed rate was provided while trying to mill a level bed.");
         return false;
     }
 

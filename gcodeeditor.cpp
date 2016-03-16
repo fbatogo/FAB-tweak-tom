@@ -34,12 +34,12 @@ bool GCodeEditor::writeFile(QString filename)
     QTextStream stream(&file);
 
     if (mGCodeFile.isEmpty() == true) {
-        log.addLine("[ERROR] Attempted to save the G-code when the G-code buffer was empty!");
+        logger.addLine("[ERROR] Attempted to save the G-code when the G-code buffer was empty!");
         return false;
     }
 
     if (file.open(QIODevice::WriteOnly) == false) {
-        log.addLine("[ERROR] Unable to open the file " + filename + " to write the G-code buffer!");
+        logger.addLine("[ERROR] Unable to open the file " + filename + " to write the G-code buffer!");
         return false;
     }
 
@@ -48,7 +48,7 @@ bool GCodeEditor::writeFile(QString filename)
     }
 
     file.close();
-    log.addLine("Wrote the G-code buffer to " + filename + ".");
+    logger.addLine("Wrote the G-code buffer to " + filename + ".");
 
     return true;
 }
@@ -168,7 +168,7 @@ void GCodeEditor::setMove(double x, double y, double z, bool contactMove)
             effectiveFeedRate = mZFeedRate;
         }
     } else {
-        log.addLine("Reached an unexpected feed rate setting with parameters (" + QString::number(x, 'f', 4) + "," + QString::number(y, 'f', 4) + "," + QString::number(z, 'f', 4) + ")");
+        logger.addLine("Reached an unexpected feed rate setting with parameters (" + QString::number(x, 'f', 4) + "," + QString::number(y, 'f', 4) + "," + QString::number(z, 'f', 4) + ")");
 
         // Just use XY rate.
         effectiveFeedRate = mXYFeedRate;
@@ -290,7 +290,7 @@ bool GCodeEditor::loadExistingFile(QString filename)
     mGCodeFile.clear();
 
     if (file.open(QIODevice::ReadOnly) == false) {
-        log.addLine("[ERROR] Unable to open the file " + filename + " for reading.");
+        logger.addLine("[ERROR] Unable to open the file " + filename + " for reading.");
         return false;
     }
 
@@ -300,7 +300,7 @@ bool GCodeEditor::loadExistingFile(QString filename)
     }
 
     file.close();
-    log.addLine("Loaded the G-code from file '" + filename + "'.");
+    logger.addLine("Loaded the G-code from file '" + filename + "'.");
     return true;
 }
 
