@@ -219,7 +219,7 @@ void GCodeEditor::setContactMove(double x, double y, double z)
  */
 void GCodeEditor::setStartSpindleClockwise(unsigned int rpm)
 {
-    addOrEditGCodeLine("M03 " + QString::number(rpm));
+    addOrEditGCodeLine("M03 S" + QString::number(rpm));
 }
 
 /**
@@ -231,6 +231,11 @@ void GCodeEditor::setStartSpindleClockwise(unsigned int rpm)
 void GCodeEditor::setDwellInMilliseconds(unsigned int milliseconds)
 {
     addOrEditGCodeLine("G04 P" + QString::number(milliseconds));
+}
+
+void GCodeEditor::setDwellInSeconds(unsigned int seconds)
+{
+    addOrEditGCodeLine("G04 S" + QString::number(seconds));
 }
 
 /**

@@ -25,6 +25,7 @@ public:
     void setContactMove(double x, double y, double z);
     void setStartSpindleClockwise(unsigned int rpm);
     void setDwellInMilliseconds(unsigned int milliseconds);
+    void setDwellInSeconds(unsigned int seconds);
     void setXYFeedRate(double feedrate);
     void setZFeedRate(double feedrate);
 

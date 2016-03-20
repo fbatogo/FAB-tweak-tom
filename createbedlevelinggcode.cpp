@@ -87,7 +87,7 @@ QString CreateBedLevelingGCode::createGCodeFile(QString filename)
     gcode.setStartSpindleClockwise(mSpindleSpeed);
 
     // And, wait for it to be spun up.
-    gcode.setDwellInMilliseconds(1);
+    gcode.setDwellInSeconds(5);
 
     // Then, move the head to the correct depth.
     gcode.setContactMove(0, 0, mCutDepth);
