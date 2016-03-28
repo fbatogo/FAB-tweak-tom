@@ -16,11 +16,13 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     createbedlevelinggcode.cpp \
     gcodeeditor.cpp \
-    logger.cpp
+    logger.cpp \
+    changegcodefeedrates.cpp
 
 HEADERS  += mainwindow.h \
     createbedlevelinggcode.h \
     gcodeeditor.h \
-    logger.h
+    logger.h \
+    changegcodefeedrates.h
 
 FORMS    += mainwindow.ui

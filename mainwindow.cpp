@@ -5,6 +5,7 @@
 #include <QMessageBox>
 
 #include "createbedlevelinggcode.h"
+#include "changegcodefeedrates.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -203,5 +204,7 @@ void MainWindow::slotFeedRateTweakingOutputFileClicked()
  */
 void MainWindow::slotFeedRateTweakingCreateButtonClicked()
 {
+    ChangeGCodeFeedRates feedRates;
+
     QMessageBox::information(this, "Not implemented", "This isn't implemented!  How lucky for you!");
 }
